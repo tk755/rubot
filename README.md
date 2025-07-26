@@ -9,9 +9,8 @@ Since `rubot` was originally designed for use in embedded systems, it implements
 ### Linux
 
 - Install (default location is `/usr/bin`):
+
     ```
-    git clone https://github.com/tk744/rubot
-    cd rubot
     sudo make install
     ```
 
@@ -23,7 +22,11 @@ Since `rubot` was originally designed for use in embedded systems, it implements
 
 ### Build from Source
 
-Build the executable `rubot` from source by running `make`.
+- Build `rubot` from source:
+
+    ```
+    make
+    ```
 
 # Usage
 
