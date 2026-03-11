@@ -77,6 +77,6 @@ void printCube(Cube c);
 // `n` is the number of moves in `ms`.
 void printMoves(Move *ms, int n);
 
-// Print an ANSII graphic representation of a Cube `c`.
-// Requires a terminal with ANSII escape codes.
+// Print an ASCII representation of a Cube `c`.
+// Requires a terminal with ANSI escape codes.
 void drawCube(Cube c);

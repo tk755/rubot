@@ -1,6 +1,6 @@
 # Overview
 
-`rubot` is a blazing fast and user friendly Rubik's cube solver written in C. It uses a highly compact 1MB lookup table to deliver instantations solutions with an average of 32 moves and a max of 46 moves.
+`rubot` is a blazing fast and user friendly Rubik's cube solver written in C. It uses a highly compact 1MB lookup table to deliver instantaneous solutions with an average of 32 moves and a max of 46 moves.
 
 Since `rubot` was originally designed for use in embedded systems, it implements [Thistletwaite's algorithm](https://www.jaapsch.net/puzzles/thistle.htm) which uses much smaller lookup tables compared to algorithms that produce even fewer moves.
 
@@ -8,7 +8,7 @@ Since `rubot` was originally designed for use in embedded systems, it implements
 
 ### Linux
 
-- Install (default location is `/usr/bin`):
+- Install (default location is `/usr/local/bin`):
 
     ```
     sudo make install
@@ -30,7 +30,7 @@ Since `rubot` was originally designed for use in embedded systems, it implements
 
 # Usage
 
-For a full list of commands, run `rubot -h`.
+For a full list of options, run `rubot -h`.
 
 ## Encoding
 
@@ -55,14 +55,14 @@ A cube is serialized as a **color string**:
 
 - From a color string.
     ```
-    $ ./rubot PBBWWBRGGWRWPPRBBRGPPGGWYYPYWWGRPBRYRPGWBYBRRGGWYYBYYP
+    $ rubot PBBWWBRGGWRWPPRBBRGPPGGWYYPYWWGRPBRYRPGWBYBRRGGWYYBYYP
     Di Fi R Li U R L F R2 U2 F L R2 D2 R2 F U2 F R2 B2 D2 B U2 R2 U2 F2 R2 U2 F2 U2 L2 B2 L2 U2
     ```
 
 - From a scramble sequence.
     
     ```
-    $ ./rubot F L2 D F B L2 U2 R U2 F D2 Fi B U B
+    $ rubot F L2 D F B L2 U2 R U2 F D2 Fi B U B
     U R F2 B D U2 R2 Bi Ri U2 Li Fi R F D2 F2 D2 R2 F R2 B R2 U2 F2 L2 F2 L2 B2 U2 L2
     ```
 
@@ -71,14 +71,14 @@ A cube is serialized as a **color string**:
 - `-c`: print the color string.
     
     ```
-    $ ./rubot -c D2 L B D B U2 Fi L B D U D Fi Di R
+    $ rubot -c D2 L B D B U2 Fi L B D U D Fi Di R
     FBURURBFDUFRULBFUDDLFLFLBDDLDRURLFUUBRRDBFLBULFRRDBLDB
     ```
 
-- `-d`: draw a colored ASCII representation (requires a terminal with ANSII escape codes).
+- `-d`: draw a colored ASCII representation (requires a terminal with ANSI escape codes).
     
     ```
-    $ ./rubot -d UDUDUDUDULRLRLRLRLFBFBFBFBFRLRLRLRLRBFBFBFBFBDUDUDUDUD
+    $ rubot -d UDUDUDUDULRLRLRLRLFBFBFBFBFRLRLRLRLRBFBFBFBFBDUDUDUDUD
     <try it in a terminal>
     ```
 
@@ -89,14 +89,14 @@ A cube is serialized as a **color string**:
 - Pass the number of moves to generate, optionally followed by an RNG seed.
     
     ```
-    $ ./rubot 25 5
+    $ rubot 25 5
     D2 U Fi B D F Ui Fi Ui F2 D B Fi D2 U Ri Bi F R L2 B2 Di B Ui Bi
     ```
 
 - As with cube solving, we can use the `-c` or `-d` flag to print the state of the scrambled cube.
     
     ```
-    $ ./rubot -c 1000
+    $ rubot -c 1000
     URBFULFDULLRULRLDBUBLFFBRBDFUDLRDRUDLDBFBFFUDURBLDBFRR
     ```
 
@@ -107,7 +107,7 @@ A cube is serialized as a **color string**:
 - `-b N`: benchmark on `N` scrambled cubes (output from my i7-13700K).
 
     ```
-    $ ./rubot -b 100000
+    $ rubot -b 100000
     Throughput: 4585.70 solves per second
     Length: 32.19 moves per solve
     ```
@@ -119,14 +119,14 @@ A cube is serialized as a **color string**:
 - Return -1 on invalid inputs with a descriptive error message.
     
     ```
-    $ ./rubot UUUUUUUUULLLxLLLLLFFFFFFFFFRRRRRRRRRBBBBBBBBBDDDDDDDDD
+    $ rubot UUUUUUUUULLLxLLLLLFFFFFFFFFRRRRRRRRRBBBBBBBBBDDDDDDDDD
     Error: Invalid color 'x' at index 12.
     ```
 
 - Return 1 on unsolvable cubes, regardless of the operation.
     
     ```
-    $ ./rubot -d DUUUUUUUULLLLLLLLLFFFFFFFFFRRRRRRRRRBBBBBBBBBDDDDDDDDU
+    $ rubot -d DUUUUUUUULLLLLLLLLFFFFFFFFFRRRRRRRRRBBBBBBBBBDDDDDDDDU
     No solution found.
     ```
 

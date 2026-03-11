@@ -1,3 +1,5 @@
+PREFIX ?= /usr/local
+BINDIR = $(PREFIX)/bin
 TARGET_EXEC = rubot
 
 # .c, .h, and .o files
@@ -29,14 +31,14 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 # Remove all build and executable files
 .PHONY: clean
 clean:
-	rm -r $(TARGET_EXEC) $(BUILD_DIR)
+	rm -rf $(TARGET_EXEC) $(BUILD_DIR)
 
 # Install to Linux system
-.SILENT: install
+.PHONY: install
 install: $(TARGET_EXEC)
-	install -m 755 $(TARGET_EXEC) /usr/bin
+	install -m 755 $(TARGET_EXEC) $(BINDIR)
 
 # Uninstall from Linux system
-.SILENT: uninstall
-uninstall: $(TARGET_EXEC)
-	rm -f /usr/bin/$(TARGET_EXEC)
+.PHONY: uninstall
+uninstall:
+	rm -f $(BINDIR)/$(TARGET_EXEC)
